@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  font-size: 28px;
+}
+
+.header {
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+#navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 0.6em;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#navbar a.active {
+  background-color: #3f9ca4;
+  color: white;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+
+.botoia{
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+.botoiimg{
+    height: auto;
+    max-width: 48px;
+    padding: 0;
+    margin: 0;
+}
+
+

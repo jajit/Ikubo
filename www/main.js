@@ -1,0 +1,4 @@
+aldatuHizkuntza(hizkuntza)
+{
+    
+}

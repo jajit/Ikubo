@@ -1,104 +1,47 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-body {
-  margin: 0;
-  font-size: 28px;
-}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="eu-ES">
+    <head>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <script src="main.js"></script>
+    </head>
+    <body style="position: relative; min-height: 100%; top: 0px" onscroll="goraPegatu()">
 
-.header {
-  background-color: #f1f1f1;
-  padding: 10px;
-  text-align: center;
-}
+        <div style="margin:0;padding:0;"class="header">
+            <a style="margin:0;padding:0;"href="http://www.ikubo.eus">
+                <img src="src/ikubo_motza.png" style="width:40vw;">
+            </a>
+        </div>
 
-#navbar {
-  overflow: hidden;
-  background-color: #333;
-}
 
-#navbar a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
+        <div id="navbar">
 
-#navbar a:hover {
-  background-color: #ddd;
-  color: black;
-}
+            <ul style="list-style-type: none; margin: 0px; padding: 0px">
+                <li><a class="active" href="main.html">Orri Nagusia</a></li>
+                <li><a href="berriak.html">Berriak</a></li>
+                <div style="float:right;">
+                    <li style="display:inline-block;float:right;"><a href="kontaktua.html">Kontaktua</a></li>
+                    <li style="float:left;"><a style="padding:0;"id="castbtn" class="botoia" href="#" onclick="aldatuHizkuntza(&quot;euskara&quot); return false"><img class="botoiimg" alt="Castellano" src="src/euskara.png"></a></li>
+                    <li style="float:right;"><a style="padding:0;"id="euskbtn" class="botoia" href="#" onclick="aldatuHizkuntza(&quot;castellano&quot); return false"><img class="botoiimg" alt="Castellano" src="src/castellan.png"></a></li>
+                </div>
+            </ul>
+        </div>
 
-#navbar a.active {
-  background-color: #3f9ca4;
-  color: white;
-}
-
-.content {
-  padding: 16px;
-}
-
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%
-}
-
-.sticky + .content {
-  padding-top: 60px;
-}
-</style>
-</head>
-<body style="position: relative; min-height: 100%; top: 0px" onscroll="myFunction()">
-
-<div class="header">
-  <a class="ikubo-logo" href="www.ikubo.eus">
-    ikubo
-    <span class="dotcom">.com</span>
-  </a>
-  <div class="ikubo-toptext" style="font-family: 'Segoe UI',Arial,Sans-serif">
-    Informatikako Ikasle Independenteak
-  </div>
-</div>
-
-<div id="navbar">
-<ul style="list-style-type: none; margin: 0px; padding: 0px">
-  <li><a class="active" href="main.html">Orri Nagusia</a></li>
-  <li><a href="berriak.html">Berriak</a></li>
-  <li><a href="kontaktua.html">Kontaktua</a></li>
-  <li style="float: right;"><a href="about.hml">Guri buruz</a></li>
-</ul>
-</div>
-
-<div class="content">
-  <h3>Sticky Navigation Example</h3>
-  <p>The navbar will stick to the top when you reach its scroll position.</p>
-  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-</div>
-
-<script>
-var navbar = document.getElementById("navbar");
-var sticky = navbar.offsetTop;
-
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
-}
-</script>
-
-</body>
+        <div class="content">
+            <h3>Sticky Navigation Example</h3>
+            <p>Errore bat okurritu da orrialdea kargatzen</p>
+        </div>
+        <script>
+            var navbar = document.getElementById("navbar")
+            var sticky = navbar.offsetTop;
+            function goraPegatu() {
+                if (window.pageYOffset >= sticky) 
+                { navbar.classList.add("sticky"); }
+                else
+                { navbar.classList.remove("sticky"); }
+            }
+        </script>
+    </body>
 </html>
