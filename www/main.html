@@ -5,33 +5,38 @@
         <link rel="stylesheet" type="text/css" href="main.css">
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
         <script src="main.js"></script>
     </head>
-    <body style="position: relative; min-height: 100%; top: 0px" onscroll="goraPegatu()">
+    <body onload="kargatuHizkuntza(&quot;euskera&quot;)" style="position: relative; min-height: 100%; top: 0px" onscroll="goraPegatu()">
 
         <div style="margin:0;padding:0;"class="header">
-            <a style="margin:0;padding:0;"href="http://www.ikubo.eus">
-                <img src="src/ikubo_motza.png" style="width:40vw;">
-            </a>
+            <div>
+                <img src="src/ikubo_motza.png" style="width:20vw;vertical-align: middle;">
+                <p id="tituloa">Informatikako Ikasle Independenteak</p>
+            </div>
         </div>
 
-
         <div id="navbar">
-
             <ul style="list-style-type: none; margin: 0px; padding: 0px">
                 <li><a class="active" href="main.html">Orri Nagusia</a></li>
                 <li><a href="berriak.html">Berriak</a></li>
                 <div style="float:right;">
-                    <li style="display:inline-block;float:right;"><a href="kontaktua.html">Kontaktua</a></li>
-                    <li style="float:left;"><a style="padding:0;"id="castbtn" class="botoia" href="#" onclick="aldatuHizkuntza(&quot;euskara&quot); return false"><img class="botoiimg" alt="Castellano" src="src/euskara.png"></a></li>
-                    <li style="float:right;"><a style="padding:0;"id="euskbtn" class="botoia" href="#" onclick="aldatuHizkuntza(&quot;castellano&quot); return false"><img class="botoiimg" alt="Castellano" src="src/castellan.png"></a></li>
+                    <li style="display:inline-block;float:right;">
+                        <a href="#" onclick="laguntza(); return false;";>Kontaktua
+                </a>
+            </li>
+                    <li style="float:left;"><a style="padding:0;"id="euskbtn" class="botoia" href="#" onclick="kargatuHizkuntza(&quot;euskera&quot); return false;"><img class="botoiimg" alt="Euskera" src="src/euskara.png"></a></li>
+                    <li style="float:right;"><a style="padding:0;"id="castbtn" class="botoia active" href="#" onclick="kargatuHizkuntza(&quot;castellano&quot); return false;"><img class="botoiimg" alt="Castellano" src="src/castellan.png"></a></li>
                 </div>
             </ul>
         </div>
 
         <div class="content">
-            <h3>Sticky Navigation Example</h3>
-            <p>Errore bat okurritu da orrialdea kargatzen</p>
+            <h3>Oops!</h3>
+            <p>Errore bat okurritu da orrialde hau kargatzen</p>
+            <p>Ha ocurrido un error al cargar la página</p>
+            <a href="http://www.ikubo.eus">Inténtalo de nuevo - Berriro saiatu</a>
         </div>
         <script>
             var navbar = document.getElementById("navbar")
