@@ -5,7 +5,8 @@
 	$from = $_POST['email'];
 	$subject = $_POST['subject'];
 	$body = $_POST['content'];
-	$to = 'rubenndlh@gmail.com';
+	$to = 'ikuboinfor@gmail.com';
+	$body = "Enviado desde: " . $from . "\nMensaje: " . $body;
 
 	$headers = array(
     	'From' => $from,
@@ -14,11 +15,11 @@
 	);
 
 	$smtp = Mail::factory('smtp', array(
-        'host' => 'ssl://smtp.gmail.com',
-        'port' => '465',
+        'host' => 'smtp.gmail.com',
+        'port' => '587',
         'auth' => true,
-        'username' => 'rubenndlh@gmail.com',
-        'password' => 'ajajNO'
+        'username' => 'ikuboinfor@gmail.com',
+        'password' => 'pasahitza'
     ));
 
 	$mail = $smtp->send($to, $headers, $body);
@@ -27,6 +28,6 @@
 	    echo('<p>' . $mail->getMessage() . '</p>');
 	} else {
 	    echo('<p>Message successfully sent!</p>');
-	    header("location: main.php");
 	}
+	header("refresh:2;url=main.php");
 ?>
