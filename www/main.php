@@ -13,6 +13,22 @@ $_SESSION['valid']=false;
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
         <script src="main.js"></script>
+
+        <!-- Codigo para cargar páginas con jquery AJAX -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#nagusia").click(function(){
+                    $("#content").load("nagusia.html");
+                });
+                $("#berriak").click(function(){
+                    $("#content").load("berriak.html");
+                });
+                $("#aktak").click(function(){
+                    $("#content").load("aktak.html");
+                }); 
+            });
+        </script>
     </head>
     <body onload="kargatuHizkuntza(&quot;euskera&quot;)" style="position: relative; min-height: 100%; top: 0px" onscroll="goraPegatu()">
 
@@ -25,9 +41,9 @@ $_SESSION['valid']=false;
 
         <div id="navbar">
             <ul style="list-style-type: none; margin: 0px; padding: 0px">
-                <li><a class="active" href="main.php">Orri Nagusia</a></li>
-                <li><a href="berriak.php">Berriak</a></li>
-                <li><a href="aktak.php">Aktak</a></li>
+                <li><a class="active" href="#">Orri Nagusia</a></li>
+                <li><a id="berriak" href="#">Berriak</a></li>
+                <li><a href="#">Aktak</a></li>
                 <div style="float:right;">
                     <li style="display:inline-block;float:right;">
                         <a href="#" onclick="laguntza(); return false;";>Kontaktua
@@ -40,7 +56,7 @@ $_SESSION['valid']=false;
             </ul>
         </div>
 
-        <div class="content">
+        <div id="content" class="content">
             <h3>Oops!</h3>
             <p>Errore bat okurritu da orrialde hau kargatzen</p>
             <p>Ha ocurrido un error al cargar la página</p>
@@ -138,6 +154,7 @@ $_SESSION['valid']=false;
             function laguntza(){
                 modalContact.style.display = "block";
             }
+
         </script>
     </body>
 </html>

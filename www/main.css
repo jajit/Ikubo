@@ -76,6 +76,17 @@ textarea{
     resize: none;
 }
 
+.berriak-small{
+    margin-left: 20vW;
+    margin-right: 20vW;
+    margin-bottom: 1vW;
+    margin-top: 1vW;
+    font-size: 1vW;
+    padding: 16px;
+    border: 2px solid;
+    border-radius: 5px;  
+}
+
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
