@@ -72,7 +72,9 @@ body {
     background-color: white;
 }
 
-
+textarea{
+    resize: none;
+}
 
 
 /* Full-width input fields */

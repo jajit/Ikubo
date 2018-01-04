@@ -27,6 +27,7 @@ $_SESSION['valid']=false;
             <ul style="list-style-type: none; margin: 0px; padding: 0px">
                 <li><a class="active" href="main.php">Orri Nagusia</a></li>
                 <li><a href="berriak.php">Berriak</a></li>
+                <li><a href="aktak.php">Aktak</a></li>
                 <div style="float:right;">
                     <li style="display:inline-block;float:right;">
                         <a href="#" onclick="laguntza(); return false;";>Kontaktua
@@ -73,7 +74,7 @@ $_SESSION['valid']=false;
 
         <!-- Contact Modal -->
         <div id="contactModal" class="modal">
-            <form id="contactForm" class="modal-content fadeIn">
+            <form id="contactForm" method="post" action="email.php" class="modal-content fadeIn">
                 <div class="imgcontainer">
                     <span id="closeContact" class="close" title="Close Contact">&times;</span>
                 </div>
@@ -86,7 +87,7 @@ $_SESSION['valid']=false;
                     <input type="text" placeholder="Enter subject of email" name="subject" required>
 
                     <!--<label><b>Content</b></label>-->
-                    <textarea cols="184" rows ="15" form="contactForm" placeholder="Write something here..." name="content" required></textarea>
+                    <textarea cols="183" rows ="15" form="contactForm" placeholder="Write something here..." name="content" required></textarea>
 
                     <button type="submit">Send e-mail</button>
                 </div>
@@ -113,6 +114,7 @@ $_SESSION['valid']=false;
 
             var modalContact = document.getElementById("contactModal");
             var spanContact = document.getElementById("closeContact");
+
 
             spanLogin.onclick = function(){
                 modalLogin.style.display = "none";
