@@ -129,7 +129,7 @@ span.psw {
 }
 
 /* The Modal (background) */
-modal{
+.modal{
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -182,6 +182,23 @@ modal{
     from {transform: scale(0)} 
     to {transform: scale(1)}
 }
+
+/* Fade in animation*/
+.fadeIn {
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-opacity: 0} 
+    to {-webkit-opacity: 1}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {

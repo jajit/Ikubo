@@ -30,8 +30,8 @@ $_SESSION['valid']=false;
                 <div style="float:right;">
                     <li style="display:inline-block;float:right;">
                         <a href="#" onclick="laguntza(); return false;";>Kontaktua
-                </a>
-            </li>
+                        </a>
+                    </li>
                     <li style="float:right;"><a id="saioa" class="botoia" href="#" onclick="saioa(); return false;">Hasi saioa</a></li>
                     <li style="float:left;"><a style="padding:0;"id="euskbtn" class="botoia" href="#" onclick="kargatuHizkuntza(&quot;euskera&quot); return false;"><img class="botoiimg" alt="Euskera" src="src/euskara.png"></a></li>
                     <li style="float:right;"><a style="padding:0;"id="castbtn" class="botoia active" href="#" onclick="kargatuHizkuntza(&quot;castellano&quot); return false;"><img class="botoiimg" alt="Castellano" src="src/castellan.png"></a></li>
@@ -46,11 +46,11 @@ $_SESSION['valid']=false;
             <a href="http://www.ikubo.eus">Inténtalo de nuevo - Berriro saiatu</a>
         </div>
         
-        <!-- Aqui he intentado hacer la mierda esa del modal del login-->
+        <!-- Login Modal -->
         <div id="loginmodal" class="modal">
-          <form class="modal-content animate" action="/action_page.php">
+          <form class="modal-content fadeIn">
             <div class="imgcontainer">
-              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+              <span id="closeLogin" class="close" title="Close Modal">&times;</span>
             </div>
 
             <div class="container">
@@ -65,10 +65,36 @@ $_SESSION['valid']=false;
             </div>
 
             <div class="container" style="background-color:#f1f1f1">
-              <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+              <button type="button" onclick="document.getElementById('loginmodal').style.display='none'" class="cancelbtn">Cancel</button>
               <span class="psw">Forgot <a href="#">password?</a></span>
             </div>
           </form>
+        </div>
+
+        <!-- Contact Modal -->
+        <div id="contactModal" class="modal">
+            <form id="contactForm" class="modal-content fadeIn">
+                <div class="imgcontainer">
+                    <span id="closeContact" class="close" title="Close Contact">&times;</span>
+                </div>
+
+                <div class="container">
+                    <label><b>E-mail</b></label>
+                    <input type="text" placeholder="Enter e-mail" name="email" required>
+
+                    <label><b>Subject</b></label>
+                    <input type="text" placeholder="Enter subject of email" name="subject" required>
+
+                    <!--<label><b>Content</b></label>-->
+                    <textarea cols="184" rows ="15" form="contactForm" placeholder="Write something here..." name="content" required></textarea>
+
+                    <button type="submit">Send e-mail</button>
+                </div>
+
+                <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('contactModal').style.display='none'" class="cancelbtn">Cancel</button>
+                </div>
+            </form>
         </div>
         
         <script>
@@ -82,13 +108,33 @@ $_SESSION['valid']=false;
             }
             
             // Login egiteko modal-a
-            var modal = document.getElementById("loginmodal");
+            var modalLogin = document.getElementById("loginmodal");
+            var spanLogin = document.getElementById("closeLogin");
+
+            var modalContact = document.getElementById("contactModal");
+            var spanContact = document.getElementById("closeContact");
+
+            spanLogin.onclick = function(){
+                modalLogin.style.display = "none";
+            }
+            spanContact.onclick = function(){
+                modalContact.style.display = "none";
+            }
 
             // Kanpoan sakatzerakoan, izkutatu
             window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
+                if (event.target == modalLogin) {
+                    modalLogin.style.display = "none";
                 }
+                else if (event.target == modalContact){
+                    modalContact.style.display = "none";
+                }
+            }
+            function saioa(){
+                modalLogin.style.display = "block";
+            }
+            function laguntza(){
+                modalContact.style.display = "block";
             }
         </script>
     </body>
