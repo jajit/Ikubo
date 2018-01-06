@@ -1,34 +1,40 @@
 //Aldagai global bat, hemen gordetzen dugu uneko hizkuntza
  hizkuntza = null;
+ momentuko_atala = "nagusia"
 
-function kargatuHizkuntza(beste_hizkuntza)
+//Hizkuntza sakatzerakoan, edukia kargatu behar dugu baina hizkuntza horretan
+function kargatuHizkuntza(beste_hizkuntza, atal_berria)
 {
    
     if ( hizkuntza === null)
         {
-            hizkuntza = "castellano";
+            hizkuntza = "euskera";
         }
-    if (beste_hizkuntza !== hizkuntza)
-        {
+    
             aldatuHizkuntzaBotoia();
-            //TODO: HEMEN LORTZEN DUGU EDUKIA AJAX BIDEZ
             hizkuntza = beste_hizkuntza;
-        }
 }
 
 //Hizkuntza aldatzerakoan, hauek aukeratzeko botoiak aldatu behar dira
-
 function aldatuHizkuntzaBotoia()
 {
     document.getElementById("euskbtn").classList.toggle("active");
     document.getElementById("castbtn").classList.toggle("active");
 }
 
-//Laguntza botoiari sakatzerakoan, laguntza orria gure hizkuntzan kargatuko dugu. Horretarako zerbitzariari hizkuntza bidaliko diogu URL aldagai moduan 
-function laguntza()
-{
-    var zer = 'laguntza.php?hizk='+ hizkuntza
-    window.location.href = zer;
+//Ataletik atalera pasatzerakoan, lehenengo botoi guztiak "itzali" behar dira
+function itzaliBotoiak(){
+    $(".atalBotoia").each(function() {
+    $(this).removeClass("active");
+    });
 }
 
-//
+//Atal berri batera pasatzerakoan, honen botoia "piztu" behar da,
+//eta atal horretan gaudela markatu hizkuntza aldatu behar bada jakiteko
+function aldatuAtala(atala){
+    piztekoa = document.getElementById(atala);
+    piztekoa.classList.add("active");
+    
+}
+
+ 
