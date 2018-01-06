@@ -19,18 +19,25 @@ $_SESSION['valid']=false;
         <script>
             $(document).ready(function(){
                 $("#nagusia").click(function(){
-                    $("#content").load("nagusia.html");
+                    $("#content").load("main.html");
+                    itzaliBotoiak();
+                    aldatuAtala("nagusia");
+
                 });
                 $("#berriak").click(function(){
-                    $("#content").load("berriak.html");
+                    $("#content").load("berriak.php?hizkuntza="+ hizkuntza);
+                    itzaliBotoiak();
+                    aldatuAtala("berriak");
                 });
                 $("#aktak").click(function(){
-                    $("#content").load("aktak.html");
+                    $("#content").load("aktak.php");
+                    itzaliBotoiak();
+                    aldatuAtala("aktak");
                 }); 
             });
         </script>
     </head>
-    <body onload="kargatuHizkuntza(&quot;euskera&quot;)" style="position: relative; min-height: 100%; top: 0px" onscroll="goraPegatu()">
+    <body onload="kargatuHizkuntza('euskera'); $('#content').load('main.html');" style="position: relative; min-height: 100%; top: 0px" onscroll="goraPegatu()">
 
         <div style="margin:0;padding:0;"class="header">
             <div>
@@ -41,17 +48,17 @@ $_SESSION['valid']=false;
 
         <div id="navbar">
             <ul style="list-style-type: none; margin: 0px; padding: 0px">
-                <li><a class="active" href="#">Orri Nagusia</a></li>
-                <li><a id="berriak" href="#">Berriak</a></li>
-                <li><a href="#">Aktak</a></li>
+                <li><a id="nagusia" class="active atalBotoia" href="#nagusia">Orri Nagusia</a></li>
+                <li><a id="berriak" class="atalBotoia" href="#berriak">Berriak</a></li>
+                <li><a id="aktak" class="atalBotoia" href="#aktak">Aktak</a></li>
                 <div style="float:right;">
                     <li style="display:inline-block;float:right;">
                         <a href="#" onclick="laguntza(); return false;";>Kontaktua
                         </a>
                     </li>
                     <li style="float:right;"><a id="saioa" class="botoia" href="#" onclick="saioa(); return false;">Hasi saioa</a></li>
-                    <li style="float:left;"><a style="padding:0;"id="euskbtn" class="botoia" href="#" onclick="kargatuHizkuntza(&quot;euskera&quot); return false;"><img class="botoiimg" alt="Euskera" src="src/euskara.png"></a></li>
-                    <li style="float:right;"><a style="padding:0;"id="castbtn" class="botoia active" href="#" onclick="kargatuHizkuntza(&quot;castellano&quot); return false;"><img class="botoiimg" alt="Castellano" src="src/castellan.png"></a></li>
+                    <li style="float:left;"><a style="padding:0;"id="euskbtn" class="botoia" href="#" onclick="kargatuHizkuntza('euskera'); return false;"><img class="botoiimg" alt="Euskera" src="src/euskara.png"></a></li>
+                    <li style="float:right;"><a style="padding:0;"id="castbtn" class="botoia active" href="#" onclick="kargatuHizkuntza('castellano'); return false;"><img class="botoiimg" alt="Castellano" src="src/castellan.png"></a></li>
                 </div>
             </ul>
         </div>
@@ -112,8 +119,18 @@ $_SESSION['valid']=false;
                     <button type="button" onclick="document.getElementById('contactModal').style.display='none'" class="cancelbtn">Cancel</button>
                 </div>
             </form>
-        </div>
+        </div>        
         
+        <!-- News Modal -->
+        <div id="newsModal" class="modal">               
+            <div class="modal-content fadeIn">                  
+                <span id="closeNews" class="close" title="Close Modal">  
+                    &times;        
+                </span>
+                <div id="berriak_edukia">
+                </div>
+            </div>
+        </div>
         <script>
             var navbar = document.getElementById("navbar")
             var sticky = navbar.offsetTop;
@@ -130,6 +147,9 @@ $_SESSION['valid']=false;
 
             var modalContact = document.getElementById("contactModal");
             var spanContact = document.getElementById("closeContact");
+            
+            var modalNews = document.getElementById("newsModal");
+            var spanNews = document.getElementById("closeNews");
 
 
             spanLogin.onclick = function(){
@@ -137,6 +157,9 @@ $_SESSION['valid']=false;
             }
             spanContact.onclick = function(){
                 modalContact.style.display = "none";
+            }
+            spanNews.onclick = function(){
+                modalNews.style.display = "none";
             }
 
             // Kanpoan sakatzerakoan, izkutatu
@@ -147,12 +170,20 @@ $_SESSION['valid']=false;
                 else if (event.target == modalContact){
                     modalContact.style.display = "none";
                 }
+                else if (event.target == modalNews){
+                    modalNews.style.display = "none";
+                }
+                
             }
             function saioa(){
                 modalLogin.style.display = "block";
             }
             function laguntza(){
                 modalContact.style.display = "block";
+            }
+            function irekiBerria(id_berria){
+                $("#berriak_edukia").load("db.php?id=" + id_berria);
+                modalNews.style.display = "block";
             }
 
         </script>
