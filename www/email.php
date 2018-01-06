@@ -3,10 +3,10 @@
 
 
 	$from = $_POST['email'];
-	$subject = $_POST['subject'];
+	$subject = "WEBLAGUNTZA " . $_POST['subject'];
 	$body = $_POST['content'];
 	$to = 'ikuboinfor@gmail.com';
-	$body = "Enviado desde: " . $from . "\nMensaje: " . $body;
+	$body = "Enviado por: " . $from . "\nMensaje: " . $body;
 
 	$headers = array(
     	'From' => $from,
