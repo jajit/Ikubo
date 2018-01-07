@@ -1,8 +1,8 @@
 <?php
 
-if(isset($_GET['id']))
+if(isset($_GET['id']) && isset($_GET['hizk']))
 {
-    echo getBerriOsoa($_GET['id']);
+    echo getBerriOsoa($_GET['id'],$_GET['hizk']);
 }
 //if(isset($_GET('user') and isset($_GET('password')))){TODO: BETE HAU}
 
@@ -25,7 +25,7 @@ if(isset($_GET['id']))
             }
             else{
                 $code .="<div class='berriak-small'>";    
-                $code .="<a href='#' onclick='irekiBerria(". $result["id_noticia"] ."); return false;'>";
+                $code .="<a href='#' onclick='irekiBerria(". $result["id_noticia"] ."," . $hizk ."); return false;'>";
                 $code .="<h2 style='margin-top: 0; margin-bottom: 0; font-weight: bold;'>" . $result["titulo"] . "</h2>";
                 $code .= "</a>";
                 $code .="<h5 style='margin-top: 0; margin-bottom: 0; font-weight: bold;'>By: " . $result["autor"] . "</h5>";
@@ -35,8 +35,8 @@ if(isset($_GET['id']))
         }
         echo $code;        
     }
-    function getBerriOsoa($id_berria){
-        $query = makeQuery("SELECT * FROM noticias WHERE id_noticia=". $id_berria ."" );
+    function getBerriOsoa($id_berria, $hizk){
+        $query = makeQuery("SELECT * FROM noticias WHERE id_noticia=". $id_berria, $hizk);
         $result = $query->fetch_assoc();
         $code = "";
         $code .="<h2>". $result["titulo"] ."</h2>";

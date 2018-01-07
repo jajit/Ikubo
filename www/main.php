@@ -181,8 +181,8 @@ $_SESSION['valid']=false;
             function laguntza(){
                 modalContact.style.display = "block";
             }
-            function irekiBerria(id_berria){
-                $("#berriak_edukia").load("db.php?id=" + id_berria);
+            function irekiBerria(id_berria, hizk){
+                $("#berriak_edukia").load("db.php?id=" + id_berria + "&hizk=" + hizk);
                 modalNews.style.display = "block";
             }
 
