@@ -19,25 +19,25 @@ $_SESSION['valid']=false;
         <script>
             $(document).ready(function(){
                 $("#nagusia").click(function(){
-                    $("#content").load("main.html");
+                    $("#content").load("nagusia.php?hizk="+ hizkuntza);
                     itzaliBotoiak();
                     aldatuAtala("nagusia");
 
                 });
                 $("#berriak").click(function(){
-                    $("#content").load("berriak.php?hizkuntza="+ hizkuntza);
+                    $("#content").load("berriak.php?hizk="+ hizkuntza);
                     itzaliBotoiak();
                     aldatuAtala("berriak");
                 });
                 $("#aktak").click(function(){
-                    $("#content").load("aktak.php");
+                    $("#content").load("aktak.php?hizk="+ hizkuntza);
                     itzaliBotoiak();
                     aldatuAtala("aktak");
                 }); 
             });
         </script>
     </head>
-    <body onload="kargatuHizkuntza('euskera'); $('#content').load('main.html');" style="position: relative; min-height: 100%; top: 0px" onscroll="goraPegatu()">
+    <body onload="kargatuHizkuntza('eu'); $('#content').load('main.html');" style="position: relative; min-height: 100%; top: 0px" onscroll="goraPegatu()">
 
         <div style="margin:0;padding:0;"class="header">
             <div>
@@ -57,8 +57,8 @@ $_SESSION['valid']=false;
                         </a>
                     </li>
                     <li style="float:right;"><a id="saioa" class="botoia" href="#" onclick="saioa(); return false;">Hasi saioa</a></li>
-                    <li style="float:left;"><a style="padding:0;"id="euskbtn" class="botoia" href="#" onclick="kargatuHizkuntza('euskera'); return false;"><img class="botoiimg" alt="Euskera" src="src/euskara.png"></a></li>
-                    <li style="float:right;"><a style="padding:0;"id="castbtn" class="botoia active" href="#" onclick="kargatuHizkuntza('castellano'); return false;"><img class="botoiimg" alt="Castellano" src="src/castellan.png"></a></li>
+                    <li style="float:left;"><a style="padding:0;"id="euskbtn" class="botoia" href="#" onclick="kargatuHizkuntza('eu'); return false;"><img class="botoiimg" alt="Euskera" src="src/euskara.png"></a></li>
+                    <li style="float:right;"><a style="padding:0;"id="castbtn" class="botoia active" href="#" onclick="kargatuHizkuntza('es'); return false;"><img class="botoiimg" alt="Castellano" src="src/castellan.png"></a></li>
                 </div>
             </ul>
         </div>

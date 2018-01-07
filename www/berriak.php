@@ -1,4 +1,7 @@
 <?php 
 include 'db.php';
-loadBerriak();
+if(isset($_GET['hizk']))
+{
+	loadBerriak($_GET['hizk']);
+}
 ?>

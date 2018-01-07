@@ -6,17 +6,18 @@ if(isset($_GET['id']))
 }
 //if(isset($_GET('user') and isset($_GET('password')))){TODO: BETE HAU}
 
-    function makeQuery($query){
-        $conection = mysqli_connect("localhost", "root", "", "ikubo_web");
+    function makeQuery($query, $hizk){
+        if ($hizk == "es") $conection = mysqli_connect("localhost", "root", "", "ikubo_web-es");
+        else if ($hizk == "eu") $conection = mysqli_connect("localhost", "root", "", "ikubo_web-eu");
         if (!$conection) return -1;
         $resultQuery = $conection->query($query);
         mysqli_close($conection);
         return $resultQuery;
     }
-    function loadBerriak(){
+    function loadBerriak($hizk){
         $done = false;
         $code = "";
-        $query = makeQuery("SELECT id_noticia, autor, titulo, version_corta FROM noticias");
+        $query = makeQuery("SELECT id_noticia, autor, titulo, version_corta FROM noticias", $hizk);
         while(!$done){
             $result = $query->fetch_assoc();
             if ($result == ""){
@@ -44,10 +45,10 @@ if(isset($_GET['id']))
         echo $code;
     }
 
-    function loadAktak(){
+    function loadAktak($hizk){
         $done = false;
         $code = "";
-        $query = makeQuery("SELECT * FROM actas");
+        $query = makeQuery("SELECT * FROM actas", $hizk);
         while (!$done){
             $result = $query->fetch_assoc();
             if($result == "") $done = true;

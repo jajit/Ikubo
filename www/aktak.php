@@ -1,4 +1,7 @@
 <?php 
 include 'db.php';
-loadAktak();
+if(isset($_GET['hizk']))
+{
+	loadAktak($_GET['hizk']);
+}
 ?>

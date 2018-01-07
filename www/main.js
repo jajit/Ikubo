@@ -8,11 +8,12 @@ function kargatuHizkuntza(beste_hizkuntza, atal_berria)
    
     if ( hizkuntza === null)
         {
-            hizkuntza = "euskera";
+            hizkuntza = "eu";
         }
     
             aldatuHizkuntzaBotoia();
             hizkuntza = beste_hizkuntza;
+            $("#content").load(momentuko_atala + ".php?hizk="+ hizkuntza);
 }
 
 //Hizkuntza aldatzerakoan, hauek aukeratzeko botoiak aldatu behar dira
@@ -34,6 +35,7 @@ function itzaliBotoiak(){
 function aldatuAtala(atala){
     piztekoa = document.getElementById(atala);
     piztekoa.classList.add("active");
+    momentuko_atala = atala;
     
 }
 
