@@ -1,1 +1,4 @@
-ayuda llename
+<?php 
+include 'db.php';
+loadAktak();
+?>

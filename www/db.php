@@ -23,7 +23,6 @@ if(isset($_GET['id']))
                 $done = true;
             }
             else{
-                // TODO: Hay que cambiar el onclick por una funcion que cargue la noticia en vez del login.
                 $code .="<div class='berriak-small'>";    
                 $code .="<a href='#' onclick='irekiBerria(". $result["id_noticia"] ."); return false;'>";
                 $code .="<h2 style='margin-top: 0; margin-bottom: 0; font-weight: bold;'>" . $result["titulo"] . "</h2>";
@@ -44,5 +43,24 @@ if(isset($_GET['id']))
         $code .="<p>". $result["version_completa"] ."</p>";
         echo $code;
     }
+
+    function loadAktak(){
+        $done = false;
+        $code = "";
+        $query = makeQuery("SELECT * FROM actas");
+        while (!$done){
+            $result = $query->fetch_assoc();
+            if($result == "") $done = true;
+            else{
+                $code .="<div class='berriak-small'>";    
+                $code .="<a href='". $result["url"] ."'>";
+                $code .="<h2 style='margin-top: 0; margin-bottom: 0; font-weight: bold;'>" . $result["titulo"] . "</h2>";
+                $code .= "</a>";
+                $code .= "</div>";
+            }
+        }
+        echo $code;
+    }
+
 //  function checkErabiltzailea(erabiltzaile, pasahitza){TODO: BETE}
 ?>
