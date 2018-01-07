@@ -25,7 +25,7 @@ if(isset($_GET['id']) && isset($_GET['hizk']))
             }
             else{
                 $code .="<div class='berriak-small'>";    
-                $code .="<a href='#' onclick='irekiBerria(". $result["id_noticia"] ."," . $hizk ."); return false;'>";
+                $code .="<a href='#' onclick='irekiBerria(". $result["id_noticia"] . "); return false;'>";
                 $code .="<h2 style='margin-top: 0; margin-bottom: 0; font-weight: bold;'>" . $result["titulo"] . "</h2>";
                 $code .= "</a>";
                 $code .="<h5 style='margin-top: 0; margin-bottom: 0; font-weight: bold;'>By: " . $result["autor"] . "</h5>";

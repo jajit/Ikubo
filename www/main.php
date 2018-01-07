@@ -128,6 +128,7 @@ $_SESSION['valid']=false;
                     &times;        
                 </span>
                 <div id="berriak_edukia">
+                    hola
                 </div>
             </div>
         </div>
@@ -181,8 +182,8 @@ $_SESSION['valid']=false;
             function laguntza(){
                 modalContact.style.display = "block";
             }
-            function irekiBerria(id_berria, hizk){
-                $("#berriak_edukia").load("db.php?id=" + id_berria + "&hizk=" + hizk);
+            function irekiBerria(id_berria){
+                $("#berriak_edukia").load("db.php?id=" + id_berria + "&hizk=" + hizkuntza);
                 modalNews.style.display = "block";
             }
 
