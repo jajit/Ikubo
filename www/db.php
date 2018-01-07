@@ -1,23 +1,25 @@
 <?php
-
+//if (!session_id()) session_start();     
 if(isset($_GET['id']) && isset($_GET['hizk']))
 {
     echo getBerriOsoa($_GET['id'],$_GET['hizk']);
 }
-//if(isset($_GET('user') and isset($_GET('password')))){TODO: BETE HAU}
-
+    //Query bat egiten dio datu euskarazko edo gaztelerazko datu baseari
     function makeQuery($query, $hizk){
-        if ($hizk == "es") $conection = mysqli_connect("localhost", "root", "", "ikubo_web-es");
-        else if ($hizk == "eu") $conection = mysqli_connect("localhost", "root", "", "ikubo_web-eu");
+        if ($hizk == "es") $conection = mysqli_connect("localhost", "ikubo", "nacle", "ikubo_web-es");
+        else if ($hizk == "eu") $conection = mysqli_connect("localhost", "ikubo", "nacle", "ikubo_web-eu");
         if (!$conection) return -1;
         $resultQuery = $conection->query($query);
         mysqli_close($conection);
         return $resultQuery;
+        
     }
+
+    // Berriak datu-basetik hartzen ditu 
     function loadBerriak($hizk){
         $done = false;
         $code = "";
-        $query = makeQuery("SELECT id_noticia, autor, titulo, version_corta FROM noticias", $hizk);
+        $query = makeQuery("SELECT id_noticia, autor, titulo, version_corta FROM noticias ORDER BY id_noticia DESC", $hizk);
         while(!$done){
             $result = $query->fetch_assoc();
             if ($result == ""){
@@ -35,6 +37,7 @@ if(isset($_GET['id']) && isset($_GET['hizk']))
         }
         echo $code;        
     }
+    //Berri oso bat hartzen du db-tik
     function getBerriOsoa($id_berria, $hizk){
         $query = makeQuery("SELECT * FROM noticias WHERE id_noticia=". $id_berria, $hizk);
         $result = $query->fetch_assoc();
@@ -45,6 +48,7 @@ if(isset($_GET['id']) && isset($_GET['hizk']))
         echo $code;
     }
 
+    //Akten lista hartzen du db-tik
     function loadAktak($hizk){
         $done = false;
         $code = "";
@@ -62,6 +66,24 @@ if(isset($_GET['id']) && isset($_GET['hizk']))
         }
         echo $code;
     }
+    //Artikulu berri bat sartzen du db-an
+    function igoArtikulua($title, $author, $text, $eusk){
+    if($eusk == "bai"){
+        $hizk = "eu";
+    }
+    else{
+        $hizk = "es";
+    }
+    $bertsio_motza = wordwrap($text, 150);
+    $query = makeQuery("INSERT INTO noticias(id_noticia, autor, titulo, version_corta, version_completa) VALUES (0,'". $author ."','" . $title . "','". $bertsio_motza . "','" . $text .  "')", $hizk);
+        
+}
 
-//  function checkErabiltzailea(erabiltzaile, pasahitza){TODO: BETE}
+    //Erabiltzaile bat existitzen den ala ez esaten du
+    function checkUser(){
+      $query = makeQuery("SELECT * FROM usuario WHERE username='". $_SESSION['user'] ."' AND password='". $_SESSION['password'] ."'");
+      $result = $query->fetch_assoc();
+      if($result == "") {$_SESSION['valid'] = false;}
+      else{$_SESSION['valid'] = true;}
+  }
 ?>
