@@ -1,0 +1,9 @@
+<!ELEMENT bisitak (bisita)*>
+<!ATTLIST bisitak azkenid IDREF #REQUIRED>
+<!ELEMENT bisita (data, izena, iruzkina, eposta?)>
+<!ATTLIST bisita id ID #REQUIRED>
+<!ELEMENT data (#PCDATA)>
+<!ELEMENT izena (#PCDATA)>
+<!ELEMENT iruzkina (#PCDATA)>
+<!ELEMENT eposta (#PCDATA)>
+<!ATTLIST eposta erakutsi (bai|ez) “ez”>

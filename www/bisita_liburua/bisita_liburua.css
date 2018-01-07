@@ -1,0 +1,49 @@
+div.iruzkina
+{
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 2em;
+	border: solid black 1px;
+}
+
+.ir_goiburua
+{
+	background-color: #00CC00;
+}
+
+.data
+{
+	font-style: italic;
+}
+
+.izena
+{
+	font-weight: bold;
+	font-size: 1.2em;
+	color: navy;
+}
+
+.eposta
+{
+	text-decoration: underline;
+	font: 0.8em monospace;
+}
+
+.ir_gorputza
+{
+	text-align: justify;
+	text-indent: 2em;
+	margin: 1em;
+}
+
+span
+{
+	padding: 1em;
+}
+
+a.gehiago
+{
+	font-size: 0.75em;
+}
+

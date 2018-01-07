@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bisita_liburua SYSTEM "bisita_liburua.dtd">
+<bisitak azkenid="b1">
+<bisita id="1">
+	<izena>Doraemon</izena>
+	<iruzkina>Dorayakiak gustoko ditut</iruzkina>
+	<eposta erakutsi="bai">katu_kosmikoa@ftr.jp</eposta>
+</bisita>
+<bisita id="2">
+	<izena>M.Rajoy</izena>
+	<iruzkina>Me han disho que por aqui habia algunos shobres</iruzkina>
+	<eposta>shobreshatutiplen@pputero.com</eposta>
+</bisita>
+<bisita id="3"><izena>igor</izena><iruzkina>JAJAXD</iruzkina><eposta erakutsi="bai">osdf@gmail.com</eposta></bisita><bisita id="4"><izena>igor</izena><iruzkina>JAJAXD</iruzkina><eposta erakutsi="bai">osdf@gmail.com</eposta></bisita><bisita id="5"><izena>igor</izena><iruzkina>JAJAXD</iruzkina><eposta erakutsi="bai">osdf@gmail.com</eposta></bisita><bisita id="6"><izena>igor</izena><iruzkina>JAJAXD</iruzkina><eposta erakutsi="bai">osdf@gmail.com</eposta></bisita><bisita id="b1"><data>Sun, 07 Jan 2018 21:41:22 +0100</data><izena>asd</izena><iruzkina>asd</iruzkina><eposta erakutsi="ez">asd@asd.com</eposta></bisita></bisitak>
