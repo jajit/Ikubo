@@ -9,6 +9,6 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     </head>
     <body>
-        <p>AGAGAGAGA main.html fitxategia naiz</p>
+        <h1>IKUBO</h1>
     </body>
 </html>
