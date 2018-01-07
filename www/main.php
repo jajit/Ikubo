@@ -1,7 +1,17 @@
 <?php 
-session_start();
-/*session is started if you don't write this line can't use $_Session  global variable*/
-$_SESSION['valid']=false;
+//Sesio bat hasten dugu fitxategien artean informazioa partekatzeko
+if (!session_id()) session_start();
+//Datubasea erabiltzeko 
+include 'db.php';
+
+//Orri hau kargatzerakoan, saioa hasi badugu, berriak igotzeko botoia erakutsi
+/*if(isset($_GET['uname']) and isset($_GET['psw'])){   
+    $_SESSION['user'] = $_GET['uname'];
+    $_SESSION['password'] = $_GET['psw'];
+    checkUser();
+    echo "jaja";
+    
+}*/ //HAU ORAINDIK EZ DOA
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="eu-ES">
@@ -34,6 +44,14 @@ $_SESSION['valid']=false;
                     itzaliBotoiak();
                     aldatuAtala("aktak");
                 }); 
+                $("#iruzkinak").click(function(){
+                    //iframe : orri bat orri baten barruan INCEPTION baina HTML-kin
+                    $("#content").html("<iframe src='https://mikeltxo.eus/bisita_liburua/iruzkinmenua.html' style='width:98vw; height:70vh;'></iframe> ");
+                    itzaliBotoiak();
+                    aldatuAtala("iruzkinak");
+                })
+
+
             });
         </script>
     </head>
@@ -51,7 +69,13 @@ $_SESSION['valid']=false;
                 <li><a id="nagusia" class="active atalBotoia" href="#nagusia">Orri Nagusia</a></li>
                 <li><a id="berriak" class="atalBotoia" href="#berriak">Berriak</a></li>
                 <li><a id="aktak" class="atalBotoia" href="#aktak">Aktak</a></li>
+                <li><a id='berria_igo' class='atalBotoia' href = "#" onClick="igo();return false;" <?php //if ($_SESSION['valid'] === false) echo "style='display:none;'"; ?>>Igo</a></li>
+                <li><a id="iruzkinak" class="atalBotoia" href="#iruzkinak">Iruzkinak</a></li>
+
+
+
                 <div style="float:right;">
+                    
                     <li style="display:inline-block;float:right;">
                         <a href="#" onclick="laguntza(); return false;";>Kontaktua
                         </a>
@@ -67,12 +91,12 @@ $_SESSION['valid']=false;
             <h3>Oops!</h3>
             <p>Errore bat okurritu da orrialde hau kargatzen</p>
             <p>Ha ocurrido un error al cargar la página</p>
-            <a href="http://www.ikubo.eus">Inténtalo de nuevo - Berriro saiatu</a>
+            <a href="mikeltxo.eus">Inténtalo de nuevo - Berriro saiatu</a>
         </div>
         
         <!-- Login Modal -->
         <div id="loginmodal" class="modal">
-          <form class="modal-content fadeIn">
+          <form class="modal-content fadeIn" method="get" action="main.php" >
             <div class="imgcontainer">
               <span id="closeLogin" class="close" title="Close Modal">&times;</span>
             </div>
@@ -85,16 +109,14 @@ $_SESSION['valid']=false;
               <input type="password" placeholder="Enter Password" name="psw" required>
 
               <button type="submit">Login</button>
-              <input type="checkbox" checked="checked"> Remember me
             </div>
 
             <div class="container" style="background-color:#f1f1f1">
               <button type="button" onclick="document.getElementById('loginmodal').style.display='none'" class="cancelbtn">Cancel</button>
-              <span class="psw">Forgot <a href="#">password?</a></span>
             </div>
           </form>
         </div>
-
+        
         <!-- Contact Modal -->
         <div id="contactModal" class="modal">
             <form id="contactForm" method="post" action="email.php" class="modal-content fadeIn">
@@ -120,6 +142,30 @@ $_SESSION['valid']=false;
                 </div>
             </form>
         </div>        
+        
+        
+                <!-- Berri bat igotzeko modal -->
+        <div id="createNewModal" class="modal">
+            <form id="newForm" method="post" action="berria_sortu.php" class="modal-content fadeIn">
+                <div class="container">
+                    <label><b>Title</b></label>
+                    <input type="text" placeholder="Titulua" name="title" required>
+
+                    <label><b>Author</b></label>
+                    <input type="text" placeholder="Autorea" name="author" required>
+
+                    <!--<label><b>Content</b></label>-->
+                    <textarea cols="180" rows ="15" form="newForm" placeholder="Write something here..." name="content" required></textarea>
+
+                    <input type="checkbox" name="euskaraz" value="bai"> Euskaraz<br>
+                    <button type="submit">Send article</button>
+                </div>
+
+                <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('createNewModal').style.display='none'" class="cancelbtn">Cancel</button>
+                </div>
+            </form>
+        </div> 
         
         <!-- News Modal -->
         <div id="newsModal" class="modal">               
@@ -152,6 +198,7 @@ $_SESSION['valid']=false;
             var modalNews = document.getElementById("newsModal");
             var spanNews = document.getElementById("closeNews");
 
+            var modalCreateNew = document.getElementById("createNewModal"); 
 
             spanLogin.onclick = function(){
                 modalLogin.style.display = "none";
@@ -186,7 +233,9 @@ $_SESSION['valid']=false;
                 $("#berriak_edukia").load("db.php?id=" + id_berria + "&hizk=" + hizkuntza);
                 modalNews.style.display = "block";
             }
-
+            function igo(){
+                modalCreateNew.style.display = "block";
+            }
         </script>
     </body>
 </html>
